@@ -3,6 +3,7 @@ const GRID_HEIGHT = 550;
 const container = document.querySelector(".container");
 const updateBtn = document.querySelector("#update-button");
 const resetBtn = document.querySelector("#reset-button");
+const slider = document.querySelector(".input");
 let gridSize = 16;
 
 // generate grid with 16 squares to begin with
@@ -54,14 +55,34 @@ function addHover() {
   }
 }
 
-function resetColour(){
-    allDivs = document.querySelectorAll(".new-div")
-    for (const div of allDivs) {
-        div.style.backgroundColor = "white"}
+function resetColour() {
+  allDivs = document.querySelectorAll(".new-div");
+  for (const div of allDivs) {
+    div.style.backgroundColor = "white";
+  }
+}
 
+function removeGridlines() {
+  allDivs = document.querySelectorAll(".new-div");
+  for (const div of allDivs) {
+    div.style.border = "none";
+  }
+}
+
+function showGridlines() {
+  allDivs = document.querySelectorAll(".new-div");
+  for (const div of allDivs) {
+    div.style.border = "1px solid black";
+  }
 }
 
 generateGrid(gridSize);
 updateBtn.addEventListener("click", updateGrid);
-resetBtn.addEventListener("click", resetColour)
-
+resetBtn.addEventListener("click", resetColour);
+checkbox.addEventListener("change", (event) => {
+  if (event.target.checked) {
+    removeGridlines()
+  } else {
+    showGridlines()
+  }
+});
