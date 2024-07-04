@@ -34,7 +34,11 @@ function getUserChoice() {
 function updateGrid() {
   let newSize = getUserChoice();
   container.innerHTML = "";
+
   generateGrid(newSize);
+  // Reset the slider
+  slider.checked = false;
+  showGridlines();
 }
 
 function generateRandomColour() {
@@ -77,12 +81,15 @@ function showGridlines() {
 }
 
 generateGrid(gridSize);
+
 updateBtn.addEventListener("click", updateGrid);
+
 resetBtn.addEventListener("click", resetColour);
-checkbox.addEventListener("change", (event) => {
+
+slider.addEventListener("change", (event) => {
   if (event.target.checked) {
-    removeGridlines()
+    removeGridlines();
   } else {
-    showGridlines()
+    showGridlines();
   }
 });
